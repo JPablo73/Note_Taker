@@ -19,8 +19,6 @@ getSave = () => {
     },
     body: JSON.stringify(note),
   });
-  // console.log(title.value);
-  // console.log(textarea.value);
 };
 
 getNote = async () => {
@@ -30,7 +28,7 @@ getNote = async () => {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.json())
+    .then((res) => res.json())
     .then((data) => {
       var div1 = document.createElement("div");
       var div = document.createElement("div");
@@ -39,8 +37,6 @@ getNote = async () => {
       label.className = "col-sm-2 control-label";
       document.querySelector(".inputGroup").style.display = "none";
       for (i = 0; i < data.length; i++) {
-        // console.log(data[i]);
-        // label.innerHTML = data.title;
         div1.className = "createdNotes";
         var commentText = document.createElement("div");
         var H1tag = document.createElement("h1");

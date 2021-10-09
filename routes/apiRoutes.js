@@ -4,9 +4,9 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
 // routes
-module.exports = function (app) {
+module.exports = (app) => {
   //get request
-  app.get("/api/notes", (request, response) => {
+  app.get("/api/notes", (req, res) => {
     console.log("\n Executing GET notes request");
 
     let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
@@ -15,12 +15,12 @@ module.exports = function (app) {
       "\n GET request - Returning notes data: " + JSON.stringify(data)
     );
 
-    response.json(data);
+    res.json(data);
   });
 
   //POST request
-  app.post("/api/notes", (request, response) => {
-    const newNote = request.body;
+  app.post("/api/notes", (req, res) => {
+    const newNote = req.body;
 
     console.log("\n POST request - New Note : " + JSON.stringify(newNote));
 
@@ -34,14 +34,14 @@ module.exports = function (app) {
 
     console.log("\n Added new note to 'db.json' file!");
 
-    response.json(data);
+    res.json(data);
   });
 
   //DELETE request
-  app.delete("/api/notes/:id", (request, response) => {
-    let noteId = request.params.id.toString();
+  app.delete("/api/notes/:id", (req, res) => {
+    let noteId = req.params.id.toString();
 
-    console.log(`\n DELETE note request for noteId: ${noteId}`);
+    console.log(`\n Delete note request for noteId: ${noteId}`);
 
     let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
@@ -51,6 +51,6 @@ module.exports = function (app) {
 
     console.log(`\n Deleted note with id : ${noteId}`);
 
-    response.json(newData);
+    res.json(newData);
   });
 };
