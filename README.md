@@ -5,6 +5,8 @@
 ## Heroku
 https://protected-sea-23262.herokuapp.com/
 
+https://jpablo73.github.io/Note_Taker/
+
 ## Table of Contents
 
 - [Description](#description)
